@@ -3,8 +3,6 @@
 import React from "react";
 import { Toolbox } from "../components/Toolbox";
 import { SettingsPanel } from "../components/SettingsPanel";
-import { Topbar } from "../components/Topbar";
-
 import { Button } from "../components/user/Button";
 import Card, { CardBottom, CardTop } from "../components/user/Card";
 import { Text } from "../components/user/Text";
@@ -40,25 +38,7 @@ export default function App() {
           <div className="flex-1">
             <Frame>
               <Element is={Container} padding={15} background="white" canvas>
-                <Navbar />
-                <Hero />
-                {/* <div>
-                  <Element
-                    is={Container}
-                    padding={10}
-                    background="white"
-                    canvas
-                  >
-                    <Text text="Hi world!" fontSize={"10"} />
-                    <Card
-                      title={"Hello"}
-                      content={"This is content"}
-                      buttonText={"button"}
-                    />
-                    <Text text="It's me again!" fontSize={"10"} />
-                    <Button />
-                  </Element>
-                </div> */}
+                <Text text="Hey there! 😊 Just drag and drop components from the sidebar to get started. Or, feel free to click me if you want to make any edits!" />
               </Element>
             </Frame>
           </div>
