@@ -27,10 +27,10 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({
   title = "fibr.ai",
-  item1 = "Item 1",
-  item2 = "Item 2",
-  item3 = "Item 3",
-  buttonText = "Button",
+  item1 = "Products",
+  item2 = "Resources",
+  item3 = "Pricing",
+  buttonText = "Get Started",
 }) => {
   const {
     connectors: { connect, drag },
@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({
           html={editableButtonText}
           onChange={(e) => setEditableButtonText(e.target.value)}
           tagName="a"
-          className="btn"
+          className="btn btn-md bg-[#f25816] border-black rounded-full"
           onBlur={() =>
             setProp((props) => (props.buttonText = editableButtonText))
           }

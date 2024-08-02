@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
       "Convert more traffic & reduce CAC by optimising your post-click experience. Experiment & publish 1000s of AI-tailored landing pages - all without changing your CMS"
   );
   const [editableButtonText, setEditableButtonText] = useState(
-    props.buttonText || "Get Started"
+    props.buttonText || "Try for free 🚀"
   );
   const [editableHeaderText, setEditableHeaderText] = useState(
     props.headerText || "AI-POWERED PERSONALIZATION PLATFORM"
@@ -84,12 +84,12 @@ const Hero: React.FC = () => {
                 }
               />
             </div>
-            <button className="btn btn-primary">
+            <button className="btn btn-lg bg-[#f25816] border-black rounded-full">
               <ContentEditable
                 html={editableButtonText}
                 onChange={(e) => setEditableButtonText(e.target.value)}
                 tagName="span" // Use a div instead of span here
-                className="border-none"
+                className=""
                 onKeyDown={(e) =>
                   handleKeyDown(e, setEditableButtonText, "buttonText")
                 }
@@ -107,7 +107,7 @@ Hero.craft = {
     heading: "Create landing pages the same way you create Ads",
     paragraph:
       "Convert more traffic & reduce CAC by optimising your post-click experience. Experiment & publish 1000s of AI-tailored landing pages - all without changing your CMS",
-    buttonText: "Get Started",
+    buttonText: "Try for free 🚀",
     headerText: "AI-POWERED PERSONALIZATION PLATFORM",
   },
   related: {

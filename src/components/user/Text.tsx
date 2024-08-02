@@ -33,7 +33,7 @@ export const Text = ({ text, fontSize }: TextProps) => {
 Text.craft = {
   props: {
     text: "Hi, click to edit me",
-    fontSize: 20,
+    fontSize: 80,
   },
   rules: {
     canDrag: (node) => node.data.props.text != "Drag",

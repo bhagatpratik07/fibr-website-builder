@@ -5,6 +5,7 @@
 import { useNode } from "@craftjs/core";
 import React from "react";
 import ContentEditable from "react-contenteditable";
+import useEditableText from "@/hooks/useEditable";
 
 interface ButtonProps {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "";
@@ -35,6 +36,15 @@ export const Button: React.FC<ButtonProps> = ({
     actions: { setProp },
   } = useNode();
 
+  const {
+    value: editableText,
+    handleChange,
+    handleKeyDown,
+  } = useEditableText({
+    property: "text",
+    initialValue: text,
+  });
+
   return (
     <button
       ref={(ref) => connect(drag(ref))}
@@ -43,15 +53,12 @@ export const Button: React.FC<ButtonProps> = ({
       } `}
     >
       <ContentEditable
-        html={text}
-        onChange={(e) =>
-          setProp(
-            (props) =>
-              (props.text = e.target.value.replace(/<\/?[^>]+(>|$)/g, ""))
-          )
-        }
+        html={editableText}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
         tagName="p"
         style={{ fontSize }}
+        suppressContentEditableWarning
       />
     </button>
   );

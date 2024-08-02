@@ -4,6 +4,7 @@ import { Container, ContainerSettings } from "./Container";
 import { Element, useNode } from "@craftjs/core";
 import { Button } from "./Button";
 import { Text } from "./Text";
+import useEditable from "@/hooks/useEditable";
 
 interface CardProps {
   title: string;
@@ -54,17 +55,67 @@ CardBottom.craft = {
 };
 
 const Card = ({ title, content, buttonText }: CardProps) => {
+  const {
+    value: editableTitle,
+    handleChange: handleTitleChange,
+    handleKeyDown: handleTitleKeyDown,
+  } = useEditable({
+    property: "title",
+    initialValue: title,
+  });
+
+  const {
+    value: editableContent,
+    handleChange: handleContentChange,
+    handleKeyDown: handleContentKeyDown,
+  } = useEditable({
+    property: "content",
+    initialValue: content,
+  });
+
+  const {
+    value: editableButtonText,
+    handleChange: handleButtonTextChange,
+    handleKeyDown: handleButtonTextKeyDown,
+  } = useEditable({
+    property: "buttonText",
+    initialValue: buttonText,
+  });
   return (
     <Container>
       <div className="card bg-primary text-primary-content w-96">
         <div className="card-body">
           <Element id="text" is={CardTop} canvas>
-            <h2 className="card-title">{title}</h2>
-            <p>{content}</p>
+            <h2 className="card-title" onKeyDown={handleTitleKeyDown}>
+              <div
+                contentEditable
+                onInput={handleTitleChange}
+                suppressContentEditableWarning
+              >
+                {editableTitle}
+              </div>
+            </h2>
+            <p>
+              <div
+                contentEditable
+                onInput={handleContentChange}
+                suppressContentEditableWarning
+              >
+                {editableContent}
+              </div>
+            </p>
           </Element>
           <div className="card-actions justify-end">
             <Element id="buttons" is={CardBottom} canvas>
-              <button className="btn">{buttonText}</button>
+              <button className="btn">
+                <div
+                  contentEditable
+                  onInput={handleButtonTextChange}
+                  suppressContentEditableWarning
+                >
+                  {editableButtonText}
+                </div>
+              </button>
             </Element>
           </div>
         </div>

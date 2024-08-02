@@ -31,7 +31,7 @@ export default function App() {
           Hero,
         }}
       >
-        <Topbar />
+        {/* <Topbar /> */}
         <div className="flex gap-4">
           <div className=" bg-white p-4 rounded-lg shadow-md">
             <Toolbox />
