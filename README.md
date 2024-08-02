@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Website Builder
 
-## Getting Started
+![alt text](image.png)
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **React**
+- **Next.js**
+- **TypeScript**
+- **Tailwind CSS**
+- **Daisy UI**: Tailwind CSS component library
+- **Craft.js**: A React framework for building a drag-and-drop editor.
+- **React ContentEditable**: A React component for editable content.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
 
-## Learn More
+- **Drag-and-Drop Interface**: Easily add and rearrange components on your webpage.
+- **Customizable Components**: Configure text, buttons, and cards with various styles.
+- **Component Settings**: Adjust colors, sizes, and text styles using intuitive settings panels.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To get started with the Website Builder, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Clone the Repository**:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/bhagatpratik07/fibr-website-builder
+   cd website-builder
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Install Dependencies**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   npm install
+   ```
+
+3. **Run the Development Server**:
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open Your Browser**:
+
+   Navigate to `http://localhost:3000` to start using the Website Builder.
+
+## Usage
+
+Once the application is running, you can start designing your webpage using the following steps:
+
+1. **Add Components**: Use the toolbox to drag and drop components like Text, Button, and Card onto your canvas.
+2. **Customize Components**: Click on components to open the settings panel and adjust their properties..
+
+## Screenshots
+
+### Editor Interface
+
+![alt text](image-1.png)
+
+### Component Settings
+
+![alt text](image-2.png)
+
+Made with ❤️ by [Pratik Bhagat](https://pratikbhagat.vercel.app)

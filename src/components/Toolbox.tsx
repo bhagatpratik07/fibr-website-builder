@@ -45,20 +45,6 @@ export const Toolbox = () => {
           )}
         </div>
 
-        <div className="flex flex-col items-center">
-          {createButton(
-            (ref) => connectors.create(ref, <Navbar />),
-            <Navbar />,
-            "Navbar"
-          )}
-        </div>
-        <div className="flex flex-col items-center">
-          {createButton(
-            (ref) => connectors.create(ref, <Hero />),
-            <Hero />,
-            "Hero"
-          )}
-        </div>
         {/* Uncomment this if you need the Container component */}
         {/* <div className="flex flex-col items-center">
           {createButton(
@@ -84,6 +70,20 @@ export const Toolbox = () => {
               buttonText="new btn"
             />,
             "Card"
+          )}
+        </div>
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) => connectors.create(ref, <Navbar />),
+            <Navbar />,
+            "Navbar"
+          )}
+        </div>
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) => connectors.create(ref, <Hero />),
+            <Hero />,
+            "Hero"
           )}
         </div>
       </div>
