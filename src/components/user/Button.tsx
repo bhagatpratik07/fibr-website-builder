@@ -26,7 +26,7 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   size = "md",
   variant = "primary",
-  color = "text-black",
+  color = "black",
   text = "Button",
   fontSize = "16px",
 }) => {
@@ -38,7 +38,9 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       ref={(ref) => connect(drag(ref))}
-      className={`btn btn-${size} btn-${variant} ${color}`}
+      className={`btn ${size && `btn-${size}`} ${variant && `btn-${variant}`} ${
+        color && `text-${color}`
+      } `}
     >
       <ContentEditable
         html={text}
@@ -65,9 +67,9 @@ const ButtonSettings: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      <div>
+      {/* <div>
         <p className="font-semibold">Size</p>
-        <div className="flex space-x-2">
+        <div className="flex flex-wrap space-x-2">
           {["xs", "sm", "md", "lg", "xl"].map((size) => (
             <label key={size} className="flex items-center space-x-1">
               <input
@@ -87,7 +89,7 @@ const ButtonSettings: React.FC = () => {
       </div>
       <div>
         <p className="font-semibold">Variant</p>
-        <div className="flex space-x-2">
+        <div className="flex flex-wrap space-x-2">
           {[
             "primary",
             "secondary",
@@ -122,7 +124,7 @@ const ButtonSettings: React.FC = () => {
           onChange={(e) => setProp((props) => (props.color = e.target.value))}
           className="w-full"
         />
-      </div>
+      </div> */}
       <div>
         <p className="font-semibold">Font Size</p>
         <input

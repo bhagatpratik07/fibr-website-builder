@@ -14,7 +14,7 @@ export const Text = ({ text, fontSize }: TextProps) => {
     actions: { setProp },
   } = useNode();
   return (
-    <div ref={(ref) => connect(drag(ref))}>
+    <div className="" ref={(ref) => connect(drag(ref))}>
       <ContentEditable
         html={text}
         onChange={(e) =>
