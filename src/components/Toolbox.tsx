@@ -8,83 +8,83 @@ import Navbar from "./templates/Navbar";
 import Hero from "./templates/Hero";
 
 export const Toolbox = () => {
-  const { connectors, query } = useEditor();
+  const { connectors } = useEditor();
+
+  const createButton = (ref, component, label) => (
+    <button
+      ref={ref}
+      // onClick={() => connectors.create(ref, component)}
+      className="btn btn-primary w-32 mb-2"
+    >
+      {label}
+    </button>
+  );
+
   return (
-    <div className="px-2 py-2">
-      <div className="flex flex-col items-center justify-center space-y-1">
-        <div className="pb-2">
-          <p>Drag to add</p>
+    <div className="p-4 space-y-4 bg-base-200 min-h-auto">
+      <div className="text-center mb-4">
+        <h2 className="text-2xl font-bold">Drag to Add</h2>
+        <p className="text-base text-gray-600">
+          Select an element to add to the canvas
+        </p>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2">
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) => connectors.create(ref, <Text />),
+            <Text />,
+            "Text"
+          )}
         </div>
-        <div className="flex flex-col">
-          <button
-            ref={(ref) =>
-              connectors.create(ref, <Button text="Click me" size="sm" />)
-            }
-            variant="contained"
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Button
-          </button>
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) =>
+              connectors.create(ref, <Button text="Click me" size="sm" />),
+            <Button text="Click me" size="sm" />,
+            "Button"
+          )}
         </div>
-        <div className="flex flex-col">
-          <button
-            ref={(ref) => connectors.create(ref, <Text />)}
-            variant="contained"
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Text
-          </button>
+
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) => connectors.create(ref, <Navbar />),
+            <Navbar />,
+            "Navbar"
+          )}
         </div>
-        <div className="flex flex-col">
-          <button
-            ref={(ref) => connectors.create(ref, <Navbar />)}
-            variant="contained"
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Navbar
-          </button>
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) => connectors.create(ref, <Hero />),
+            <Hero />,
+            "Hero"
+          )}
         </div>
-        <div className="flex flex-col">
-          <button
-            ref={(ref) => connectors.create(ref, <Hero />)}
-            variant="contained"
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Hero
-          </button>
-        </div>
-        {/* <div className="flex flex-col">
-          <button
-            ref={(ref) =>
-              connectors.create(
-                ref,
-                <Container                 
-                />
-              )
-            }
-            variant="contained"
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Container
-          </button>
+        {/* Uncomment this if you need the Container component */}
+        {/* <div className="flex flex-col items-center">
+          {createButton(
+            (ref) => connectors.create(ref, <Container />),
+            <Container />,
+            "Container"
+          )}
         </div> */}
-        <div className="flex flex-col">
-          <button
-            ref={(ref) =>
+        <div className="flex flex-col items-center">
+          {createButton(
+            (ref) =>
               connectors.create(
                 ref,
                 <Card
-                  title={"New Card"}
-                  content={"New content"}
-                  buttonText={"new btn"}
+                  title="New Card"
+                  content="New content"
+                  buttonText="new btn"
                 />
-              )
-            }
-            variant="contained"
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Card
-          </button>
+              ),
+            <Card
+              title="New Card"
+              content="New content"
+              buttonText="new btn"
+            />,
+            "Card"
+          )}
         </div>
       </div>
     </div>

@@ -15,9 +15,9 @@ import Hero from "@/components/templates/Hero";
 
 export default function App() {
   return (
-    <div className=" mx-auto">
-      <h1 className="text-2xl font-bold text-center mb-4">
-        A super simple page editor
+    <div className="mx-auto">
+      <h1 className="text-md text-center mb-4">
+        Website Builder for Fibr, made with ❤️ by Pratik
       </h1>
       <Editor
         resolver={{

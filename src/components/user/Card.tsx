@@ -5,11 +5,16 @@ import { Element, useNode } from "@craftjs/core";
 import { Button } from "./Button";
 import { Text } from "./Text";
 import useEditable from "@/hooks/useEditable";
+import { text } from "stream/consumers";
 
 interface CardProps {
   title: string;
   content: string;
   buttonText: string;
+  cardColor?: string;
+  textColor?: string;
+  cardSize?: string;
+  textSize?: string;
 }
 
 interface CardToDownProps {
@@ -29,7 +34,6 @@ export const CardTop = ({ children }: CardToDownProps) => {
 
 CardTop.craft = {
   rules: {
-    // Only accept Text
     canMoveIn: (incomingNodes: any[]) =>
       incomingNodes.every((incomingNode) => incomingNode.data.type === Text),
   },
@@ -44,17 +48,23 @@ export const CardBottom = ({ children }: CardToDownProps) => {
 
 CardBottom.craft = {
   rules: {
-    // Only accept Buttons
     canMoveIn: (incomingNodes: any[]) =>
       incomingNodes.every((incomingNode) => incomingNode.data.type === Button),
   },
   related: {
-    // Since Card has the same settings as Container, we'll just reuse ContainerSettings
     settings: ContainerSettings,
   },
 };
 
-const Card = ({ title, content, buttonText }: CardProps) => {
+const Card = ({
+  title,
+  content,
+  buttonText,
+  cardColor = "bg-primary",
+  textColor = "text-primary-content",
+  cardSize = "w-96",
+  textSize = "text-base",
+}: CardProps) => {
   const {
     value: editableTitle,
     handleChange: handleTitleChange,
@@ -81,13 +91,21 @@ const Card = ({ title, content, buttonText }: CardProps) => {
     property: "buttonText",
     initialValue: buttonText,
   });
+
   return (
     <Container>
-      <div className="card bg-primary text-primary-content w-96">
+      <div
+        style={{ background: cardColor }}
+        className={`card ${cardColor} ${textColor} ${cardSize}`}
+      >
         <div className="card-body">
           <Element id="text" is={CardTop} canvas>
-            <h2 className="card-title" onKeyDown={handleTitleKeyDown}>
+            <h2
+              className={`card-title ${textSize}`}
+              onKeyDown={handleTitleKeyDown}
+            >
               <div
+                style={{ color: textColor, fontSize: textSize }}
                 contentEditable
                 onInput={handleTitleChange}
                 suppressContentEditableWarning
@@ -95,8 +113,9 @@ const Card = ({ title, content, buttonText }: CardProps) => {
                 {editableTitle}
               </div>
             </h2>
-            <p>
+            <p className={textSize}>
               <div
+                style={{ color: textColor, fontSize: textSize }}
                 contentEditable
                 onInput={handleContentChange}
                 suppressContentEditableWarning
@@ -109,6 +128,10 @@ const Card = ({ title, content, buttonText }: CardProps) => {
             <Element id="buttons" is={CardBottom} canvas>
               <button className="btn">
                 <div
+                  style={{
+                    color: textColor,
+                    fontSize: textSize,
+                  }}
                   contentEditable
                   onInput={handleButtonTextChange}
                   suppressContentEditableWarning
@@ -122,6 +145,85 @@ const Card = ({ title, content, buttonText }: CardProps) => {
       </div>
     </Container>
   );
+};
+
+const CardSettings: React.FC = () => {
+  const {
+    actions: { setProp },
+    props,
+  } = useNode((node) => ({
+    props: node.data.props,
+  }));
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <p className="font-semibold">Card Color</p>
+        <input
+          type="color"
+          value={props.cardColor || "#000000"}
+          onChange={(e) =>
+            setProp((props) => (props.cardColor = e.target.value))
+          }
+          className="w-full"
+        />
+      </div>
+      {/* <div>
+        <p className="font-semibold">Text Color</p>
+        <input
+          type="color"
+          value={props.textColor || "#ffffff"}
+          onChange={(e) =>
+            setProp((props) => (props.textColor = e.target.value))
+          }
+          className="w-full"
+        />
+      </div> */}
+      <div>
+        <p className="font-semibold">Card Size</p>
+        <select
+          value={props.cardSize || "w-96"}
+          onChange={(e) =>
+            setProp((props) => (props.cardSize = e.target.value))
+          }
+          className="w-full"
+        >
+          <option value="w-64">Small</option>
+          <option value="w-96">Medium</option>
+          <option value="w-128">Large</option>
+        </select>
+      </div>
+      {/* <div>
+        <p className="font-semibold">Text Size</p>
+        <select
+          value={props.textSize || "text-base"}
+          onChange={(e) =>
+            setProp((props) => (props.textSize = e.target.value))
+          }
+          className="w-full"
+        >
+          <option value="text-sm">Small</option>
+          <option value="text-base">Medium</option>
+          <option value="text-lg">Large</option>
+        </select>
+      </div> */}
+    </div>
+  );
+};
+
+Card.craft = {
+  props: {
+    title: "Card Title",
+    content: "Card Content",
+    buttonText: "Click Me",
+    cardColor: "bg-primary",
+    textColor: "text-primary-content",
+    cardSize: "w-96",
+    textSize: "text-base",
+  },
+  related: {
+    settings: CardSettings,
+  },
 };
 
 export default Card;
