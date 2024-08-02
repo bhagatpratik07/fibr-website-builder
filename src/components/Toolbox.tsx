@@ -26,12 +26,7 @@ export const Toolbox = () => {
         </div>
         <div className="flex flex-col">
           <button
-            ref={(ref) =>
-              connectors.create(
-                ref,
-                <Text text={"I am new here click me!"} fontSize={"10"} />
-              )
-            }
+            ref={(ref) => connectors.create(ref, <Text fontSize={"10"} />)}
             variant="contained"
             className="px-4 py-2 bg-blue-500 text-white rounded"
           >

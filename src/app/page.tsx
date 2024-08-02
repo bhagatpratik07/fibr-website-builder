@@ -26,12 +26,12 @@ export default function App() {
           </div>
           <div className="flex-1">
             <Frame>
-              <Element is={Container} padding={15} background="#eee" canvas>
+              <Element is={Container} padding={15} background="white" canvas>
                 <div>
                   <Element
                     is={Container}
                     padding={10}
-                    background="black"
+                    background="white"
                     canvas
                   >
                     <Text text="Hi world!" fontSize={"10"} />
@@ -41,7 +41,7 @@ export default function App() {
                       buttonText={"button"}
                     />
                     <Text text="It's me again!" fontSize={"10"} />
-                    <Button text="Click me!" size="sm" />
+                    <Button text="Click me!" size="sm" color="primary" />
                   </Element>
                 </div>
               </Element>

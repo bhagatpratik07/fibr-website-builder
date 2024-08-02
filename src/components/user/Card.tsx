@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Container } from "./Container";
+import { Container, ContainerSettings } from "./Container";
 import { Element, useNode } from "@craftjs/core";
 import { Button } from "./Button";
 import { Text } from "./Text";
@@ -46,6 +46,10 @@ CardBottom.craft = {
     // Only accept Buttons
     canMoveIn: (incomingNodes: any[]) =>
       incomingNodes.every((incomingNode) => incomingNode.data.type === Button),
+  },
+  related: {
+    // Since Card has the same settings as Container, we'll just reuse ContainerSettings
+    settings: ContainerSettings,
   },
 };
 
