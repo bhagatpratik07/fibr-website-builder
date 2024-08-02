@@ -5,6 +5,7 @@ import { Text } from "./user/Text";
 import Card from "./user/Card";
 import { Container } from "./user/Container";
 import Navbar from "./templates/Navbar";
+import Hero from "./templates/Hero";
 
 export const Toolbox = () => {
   const { connectors, query } = useEditor();
@@ -41,6 +42,15 @@ export const Toolbox = () => {
             className="px-4 py-2 bg-blue-500 text-white rounded"
           >
             Navbar
+          </button>
+        </div>
+        <div className="flex flex-col">
+          <button
+            ref={(ref) => connectors.create(ref, <Hero />)}
+            variant="contained"
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Hero
           </button>
         </div>
         {/* <div className="flex flex-col">

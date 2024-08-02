@@ -44,7 +44,10 @@ const Navbar: React.FC<NavbarProps> = ({
   const [editableButtonText, setEditableButtonText] = useState(buttonText);
 
   return (
-    <div ref={(ref) => connect(drag(ref))} className="navbar bg-base-100">
+    <div
+      ref={(ref) => connect(drag(ref))}
+      className="navbar bg-base-100 border border-b-slate-800"
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

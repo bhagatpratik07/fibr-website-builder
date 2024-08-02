@@ -11,10 +11,11 @@ import { Text } from "../components/user/Text";
 import { Editor, Frame, Element } from "@craftjs/core";
 import { Container } from "../components/user/Container";
 import Navbar from "@/components/templates/Navbar";
+import Hero from "@/components/templates/Hero";
 
 export default function App() {
   return (
-    <div className="w-2/3 mx-auto">
+    <div className=" mx-auto">
       <h1 className="text-2xl font-bold text-center mb-4">
         A super simple page editor
       </h1>
@@ -27,6 +28,7 @@ export default function App() {
           CardTop,
           CardBottom,
           Navbar,
+          Hero,
         }}
       >
         <Topbar />
@@ -39,7 +41,8 @@ export default function App() {
             <Frame>
               <Element is={Container} padding={15} background="white" canvas>
                 <Navbar />
-                <div>
+                <Hero />
+                {/* <div>
                   <Element
                     is={Container}
                     padding={10}
@@ -47,15 +50,15 @@ export default function App() {
                     canvas
                   >
                     <Text text="Hi world!" fontSize={"10"} />
-                    {/* <Card
+                    <Card
                       title={"Hello"}
                       content={"This is content"}
                       buttonText={"button"}
                     />
                     <Text text="It's me again!" fontSize={"10"} />
-                    <Button /> */}
+                    <Button />
                   </Element>
-                </div>
+                </div> */}
               </Element>
             </Frame>
           </div>
